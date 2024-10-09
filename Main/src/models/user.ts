@@ -1,10 +1,10 @@
 import { Schema, model, Document, ObjectId } from 'mongoose';
 
 interface IUser extends Document {
-    username?: string;
-    email?: string;
-    thoughts: ObjectId[];
-    friends: ObjectId[];   //Array of _id values referencing the User model (self-reference)???
+    username: string;
+    email: string;
+    thoughts: ObjectId[];  
+    friends: ObjectId[];   
 }
 
 const userSchema = new Schema<IUser>(
@@ -21,13 +21,13 @@ const userSchema = new Schema<IUser>(
         unique: true,
         match: [/.+@.+\..+/, 'Please enter a valid e-mail address'],
     },
-    thoughts: [{ 
+    thoughts: [{            //Array of _id values referencing the Thought model???  ASK ABOUT THIS
         type: Schema.Types.ObjectId, 
             ref: 'Thought' 
         },
         ],
 
-    friends: [
+    friends: [      //Array of _id values referencing the User model (self-reference)???  ASK ABOUT THIS
         { type: Schema.Types.ObjectId, 
             ref: 'User' 
         },

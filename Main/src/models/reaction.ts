@@ -1,4 +1,4 @@
-import { Schema, Document, ObjectId } from 'mongoose';
+import { Schema, model, Document, ObjectId } from 'mongoose';
 
 interface IReaction extends Document {
     reactionId: ObjectId;
@@ -33,4 +33,6 @@ const reactionSchema = new Schema<IReaction>(
     }
 );
 
-export default reactionSchema;
+const Reaction = model('Reaction', reactionSchema);
+
+export default Reaction;

@@ -1,5 +1,5 @@
-import { Schema, Document } from 'mongoose';
-import reactionSchema from './reaction';
+import { Schema, model, Document } from 'mongoose';
+import reactionSchema from './Reaction';
 
 interface IThought extends Document{
     thoughtText: String;
@@ -31,5 +31,7 @@ const thoughtSchema = new Schema<IThought>(
 
     });
 
-export default thoughtSchema;  //export the Thought model
+const Thought = model('Thought', thoughtSchema);  //initialize the Thought model
+
+export default Thought;  //export the Thought model
 

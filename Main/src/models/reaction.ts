@@ -4,7 +4,7 @@ interface IReaction extends Document {
     reactionId: ObjectId;
     reactionBody: string;
     username: string;
-    createdAt: Date;
+    createdAt: String;
 }
 
 const reactionSchema = new Schema<IReaction>(

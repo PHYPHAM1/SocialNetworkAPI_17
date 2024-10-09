@@ -3,7 +3,7 @@ import reactionSchema from './reaction';
 
 interface IThought extends Document{
     thoughtText: String;
-    createdAt: Date;
+    createdAt: String;
     username: String;  //the user that created this thought
     reactions: []; //TODOS: objectID?? , ref an array of reactions, nested documents created with the reactionSchema
 }
@@ -31,4 +31,5 @@ const thoughtSchema = new Schema<IThought>(
 
     });
 
+export default thoughtSchema;  //export the Thought model
 

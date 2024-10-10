@@ -1,4 +1,4 @@
-import { User } from '../models';   //TODOS: ??? .js or not?
+import { User } from '../models/user';   //TODOS: ??? .js or not?
 import { Request, Response } from 'express';
 
 //getting all users

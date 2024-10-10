@@ -1,4 +1,4 @@
-import { User } from '../models/user';   //TODOS: ??? .js or not?
+import User  from '../models/user.js';   //TODOS: ??? .js or not?
 import { Request, Response } from 'express';
 
 //getting all users
@@ -13,7 +13,7 @@ export const getUsers = async (_req: Request, res: Response) => {
 //get a single user
 export const getSingleUser = async (req: Request, res: Response) => {
     try {
-        const results = await User.findById(req.params.id);
+        const results = await User.findById(req.params.id);    //TODOS:  CHECK req.params.id  ,this belongs to ??
         res.status(200).json(results);
     }catch (error) {
         res.status(500).json({ error });

@@ -1,7 +1,7 @@
 import express from 'express';
 import { MongoClient, MongoError } from 'mongodb';
 import data from './seeds/data.js'; //we want the .js after its been executed
-import { User } from './models/user';
+import { User } from './models/user.js';
 import { Thought } from './models/thought.js'
 
 //TODOS: ASK BOUT HIS db.. import db from './config/connection.js';  

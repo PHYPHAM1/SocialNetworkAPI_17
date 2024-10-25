@@ -21,14 +21,16 @@ const userSchema = new Schema<IUser>(
         unique: true,
         match: [/.+@.+\..+/, 'Please enter a valid e-mail address'],
     },
-    thoughts: [{            //Array of _id values referencing the Thought model???  ASK ABOUT THIS
-        type: Schema.Types.ObjectId, 
+    thoughts: [
+        {    //Array of _id values referencing the Thought model
+            type: Schema.Types.ObjectId, 
             ref: 'Thought' 
         },
         ],
 
-    friends: [      //Array of _id values referencing the User model (self-reference)???  ASK ABOUT THIS
-        { type: Schema.Types.ObjectId, 
+    friends: [  //Array of _id values referencing the User model (self-reference)???  ASK ABOUT THIS
+        {   
+            type: Schema.Types.ObjectId, 
             ref: 'User' 
         },
         ],

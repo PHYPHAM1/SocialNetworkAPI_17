@@ -1,6 +1,6 @@
-import { Schema, model, Document, ObjectId } from 'mongoose';
+import { Schema, Document, ObjectId, Types } from 'mongoose';
 
-interface IReaction extends Document {
+export interface IReaction extends Document {
     reactionId: ObjectId;
     reactionBody: string;
     username: string;
@@ -10,8 +10,11 @@ interface IReaction extends Document {
 const reactionSchema = new Schema<IReaction>(
     {
         reactionId: {
-            type: Schema.Types.ObjectId, auto: true},
-            // default: () => new ObjectId(),
+            type: Schema.Types.ObjectId, 
+            default: () => new Types.ObjectId, 
+            auto: true},
+            // default: new ObjectId();
+            //Todo: default, what does this do
         
         reactionBody: {
             type: String,
@@ -30,9 +33,15 @@ const reactionSchema = new Schema<IReaction>(
                 return date.toLocaleString();
             },
         },
-    }
+    },
+    {
+    toJSON: {
+        getters: true,
+    },
+    id: false,
+}
 );
+// dont need this line, reaction is schema ONLY, per thought model line 30, not backed by their own collection
+// const Reaction = model('Reaction', reactionSchema);
 
-const Reaction = model('Reaction', reactionSchema);
-
-export default Reaction;
+export default reactionSchema;

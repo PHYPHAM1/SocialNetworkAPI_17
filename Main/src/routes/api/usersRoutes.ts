@@ -1,12 +1,29 @@
 import { Router } from 'express';
 const router = Router();
-import { createUsers , getUsers , getSingleUser } from '../../controllers/userController';
+import { createUser , getUsers , getSingleUser, deleteSingleUser, updateSingleUser } from '../../controllers/userController.js';
 
-//api users, get all users, and  create a user (post)
-router.route('/api/users').get(getUsers).post((createUsers));  
-//TODOS: DO I NEED THIS?? IF I ALREADY HAVE  app.post, app.get routes for users in server.ts
+//api/users, create a user (post)-DONE
+//router.route('/').get(getUsers).post((createUser));
+//TODOS: DO I NEED THE  the line above ".get(getUsers)"
+router.route('/').post((createUser));
 
-//api/users/:id, get a single user
-router.route('/api/user/:id').get(getSingleUser);
+//api/users, get all users -DONE
+router.route('/').get(getUsers);  
 
-export default router;
+//api/users/:id, get a single userbyid-DONE
+//TODOS: WHAT IS :id  FUNCTION?? when i put /:id into the browser field  in insomnia it does not work
+router.route('/:id').get(getSingleUser);
+
+//update user (put) 
+//TODOS: how to show the update in Insomnia
+router.route('/:id').put(updateSingleUser);
+
+//delete user
+//TODOS: do I need to getUsers first b4 deleting???
+router.route('/:id').delete(deleteSingleUser);   //removed the .get(getUsers), changed '/delete to /:id'
+
+export { router as userRouter };
+
+
+//need to use routes instead...and import it to serverts
+

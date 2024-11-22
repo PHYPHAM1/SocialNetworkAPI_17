@@ -47,7 +47,7 @@ export const updateThought = async (req: Request, res: Response) => {
     try {
         const thought = await Thought.findOneAndUpdate
         ({ _id: req.params.id},   //todo: ask about .id here. how/what/where i get it from. do I name it?? id of thoughts? how does it know
-        { $addToset: {reactions: req.body} },  //pushing the whole request body onto responses, must be like the schema of 
+        {$set: req.body},  //pushing the whole request body onto responses, must be like the schema of 
         { runValidators: true, new: true} //todo: what does this line mean?
         );
         if(!thought){
@@ -126,28 +126,5 @@ export const deleteReaction = async (req: Request, res: Response) => {
 
 
 
-// export const getReaction = async (_req: Request, res: Response) => {
-//     try {
-//         const results = await Reaction.find();
-//         res.status(200).json(results);
-//     } catch (error) {
-//         res.status(500).json({error});
-//     }
-// }
-
-//get a single reaction
-// export const getSingleReaction = async (req: Request, res: Response) => {
-//     try{
-//         const reaction = await Reaction.findOne({_id: req.params.ReactionId});
-//         if(!reaction){
-//             res.status(404).json({message: 'No reaction with that ID'});
-//         }else{
-//             res.json(reaction);
-//         }
-//     }catch {
-//         res.status(500).json(Error);
-        
-//     }
-// }
 
 
